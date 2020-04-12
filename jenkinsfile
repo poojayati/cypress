@@ -14,7 +14,7 @@ stage('build'){
 
 }
 
-stage('test'){
+stage('test step'){
 nodejs(nodeJSInstallationName:'nodejs'){
     
     sh npm run test -- -- headed
