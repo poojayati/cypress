@@ -9,11 +9,11 @@ pipeline{
 
             stage('build'){
                steps{
-                //nodejs(nodeJSInstallationName:'nodejs'){
+                nodejs(nodeJSInstallationName:'nodejs'){
                 
-                sh npm install
+                sh 'npm install'
 
-               // }
+               }
               }
             }
 
@@ -22,7 +22,7 @@ pipeline{
               steps{
                 nodejs(nodeJSInstallationName:'nodejs'){
                 
-                sh npm run headedTest
+                sh 'npm run headedTest'
 
                 }
               }
