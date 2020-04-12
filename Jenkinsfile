@@ -1,30 +1,34 @@
-node{
+pipeline{
+  agent any
+        stages{
+            stage('checkout'){
+              steps{
+                checkout scm
+              }
+            }
 
-stage('checkout'){
-  checkout scm
+            stage('build'){
+               steps{
+                nodejs(nodeJSInstallationName:'nodejs'){
+                
+                sh npm install
 
+                }
+              }
+            }
+
+            stage('test step'){
+
+              steps{
+                nodejs(nodeJSInstallationName:'nodejs'){
+                
+                sh npm run headedTest
+
+                }
+              }
+            }
+  }
 }
-
-stage('build'){
-    nodejs(nodeJSInstallationName:'nodejs'){
-    
-    sh npm install
-
-    }
-
-}
-
-stage('test step'){
-nodejs(nodeJSInstallationName:'nodejs'){
-    
-    sh npm run headedTest
-
-    }
-
-}
-}
-
-
 
 
 
