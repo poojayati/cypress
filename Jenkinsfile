@@ -53,7 +53,7 @@ pipeline{
                  publishHTML(target: [
                   reportDir            : 'mochawesome-report',
                   reportFiles          : 'finalReport.html',
-                  reportName           : "MochaTestReport",
+                  reportName           : 'MochaTestReport',
                   keepAll              : false,
                   alwaysLinkToLastBuild: true,
                   allowMissing         : false
