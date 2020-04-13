@@ -37,12 +37,20 @@ pipeline{
               }
             }
 
-             stage('publish reports'){
+             stage('generate reports'){
                steps{
                 nodejs(nodeJSInstallationName:'nodejs'){
                 
                   sh 'npm run generate-reports'
-                  publishHTML(target: [
+                 
+
+                }
+              }
+            }
+
+            stage('publish reports'){
+              steps{
+                 publishHTML(target: [
                   reportDir            : 'mochawesome-report',
                   reportFiles          : 'finalReport.html',
                   reportName           : "Mocha Test Report",
@@ -50,8 +58,6 @@ pipeline{
                   alwaysLinkToLastBuild: true,
                   allowMissing         : false
                 ])
-
-                }
               }
             }
   }
