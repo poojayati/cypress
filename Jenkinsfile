@@ -9,24 +9,36 @@ pipeline{
 
             stage('build'){
                steps{
-                //nodejs(nodeJSInstallationName:'nodejs'){
+                nodejs(nodeJSInstallationName:'nodejs'){
                 
                 sh 'npm install'
 
-               //}
+               }
               }
             }
 
-            stage('test step'){
+            stage('test'){
 
               steps{
-                //nodejs(nodeJSInstallationName:'nodejs'){
+                nodejs(nodeJSInstallationName:'nodejs'){
                 
-                sh 'npm run headedTest'
+                sh 'npm run multi-report'
 
-                //}
+                }
               }
             }
+
+             stage('generate reports'){
+
+              steps{
+                nodejs(nodeJSInstallationName:'nodejs'){
+                
+                sh 'npm run generate-reports'
+
+                }
+              }
+            }
+            
   }
 }
 

@@ -4,12 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/cypress run",
-    "headedTest": "npm run test -- --headed"
+    "test": "npx cypress run",
+    "multi-report": "npm test --reporter mochawesome --reportDir cypress/results/my-[hash].json",
+    "merge-reports":"npx mochawesome-merge --reportDir cypress/results > finalReport.json",
+    "html-report":"npx marge finalReport.json",
+    "generate-reports":"npx mochawesome-merge --reportDir cypress/results > finalReport.json & npx marge finalReport.json",
+    "clean-reports":"rm -rf cypress/results mochawesome-report/finalReport.html ./finalReport.json "
+
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^4.3.0"
-  }
+    "cypress": "^3.6.1",
+    "mocha": "^5.2.0",
+    "mochawesome": "^4.1.0",
+    "mochawesome-merge": "^2.1.0",
+    "mochawesome-report-generator": "^4.1.0"
+  },
+  "dependencies": {}
 }
