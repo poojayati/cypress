@@ -109,23 +109,25 @@ pipeline{
 
         //EMAIL notification code
         success{
-
-          //script{
+          script{
+          def to = emailextrecipients([
+            [$class: 'CulpritsRecipientProvider'],
+            [$class: 'DevelopersRecipientProvider'],
+            [$class: 'RequesterRecipientProvider']
+        ])
+          
           //set variables
-         /* def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.result}"
+          def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.result}"
           def content = "${JELLY_SCRIPT,template='html'}"
 
           //send email
           emailext(body:content,mimeType:'text/html',replyTo='$DEFAULT_REPLYTO',subject=subject,
-          to:'poojayati7@gmail.com',attachLog:true)*/
+          to:to,attachLog:true)
 
-          emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
-                    to: "${EMAIL_TO}", 
-                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+      
 
 
-
-         // }
+         }
 
           }
         }
