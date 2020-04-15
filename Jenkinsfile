@@ -118,7 +118,7 @@ pipeline{
           
           //set variables
           def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.result}"
-          def content = "${JELLY_SCRIPT,template='html'}"
+          def content = "${env.BUILD_URL}"
 
           //send email
           emailext(body:content,mimeType:'text/html',replyTo='$DEFAULT_REPLYTO',subject=subject,
