@@ -51,7 +51,7 @@ pipeline{
                 }
                 }
               }
-            }
+            
 
              stage('generate reports'){
                steps{
@@ -76,6 +76,7 @@ pipeline{
                 ])
               }
             }
+        }
 
              post{
        /* // triggered when buildResult status is SUCCESS
@@ -128,8 +129,8 @@ pipeline{
 
           }
         }
-      }
-  }
+      
+  
 }
 
 
